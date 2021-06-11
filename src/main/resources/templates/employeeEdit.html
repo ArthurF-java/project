@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml"
+        lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ProjectM</title>
+</head>
+
+<body>
+<div style="position: relative; text-align: right;">
+    <form th:method="post" th:action="@{/logout}">
+        <input type="submit" value="logout">
+    </form>
+</div>
+<br><br>
+<div style="position:relative; text-align: center">
+    <form th:action="@{/main}" th:method="get">
+        <input type="submit" value="MAIN MENU">
+    </form>
+</div>
+<br><br>
+<div style="position:relative; text-align: center">
+    <form style="display: inline" th:action="@{/main/employee/add}" th:method="get">
+        <input type="submit" value="ADD EMPLOYEE">
+    </form>&nbsp;&nbsp;&nbsp;
+    <form style="display: inline" th:action="@{/main/employee/edit}" th:method="get">
+        <input type="submit" value="EDIT EMPLOYEE">
+    </form>&nbsp;&nbsp;&nbsp;
+    <form style="display: inline" th:action="@{/main/employee/delete}" th:method="get">
+        <input type="submit" value="DELETE EMPLOYEE">
+    </form>&nbsp;&nbsp;&nbsp;
+</div>
+
+
+
+</body>
+
+</html>

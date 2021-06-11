@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml"
+        lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ProjectM</title>
+</head>
+<body>
+<div style="position: relative; text-align: right;">
+    <form th:method="post" th:action="@{/logout}">
+        <input type="submit" value="logout">
+    </form>
+</div>
+<br><br>
+<div style="position:relative; text-align: center">
+    <form th:action="@{/main}" th:method="get">
+        <input type="submit" value="MAIN MENU">
+    </form>
+</div>
+<br><br>
+<div style="position:relative; text-align: center">
+    <form style="display: inline" th:action="@{/main/employee/add}" th:method="get">
+        <input type="submit" value="ADD EMPLOYEE">
+    </form>&nbsp;&nbsp;&nbsp;
+    <form style="display: inline" th:action="@{/main/employee/edit}" th:method="get">
+        <input type="submit" value="EDIT EMPLOYEE">
+    </form>&nbsp;&nbsp;&nbsp;
+    <form style="display: inline" th:action="@{/main/employee/delete}" th:method="get">
+        <input type="submit" value="DELETE EMPLOYEE">
+    </form>&nbsp;&nbsp;&nbsp;
+</div>
+<br><br>
+<div style="position:relative; text-align: center">
+    <p>Do you need get information of employee?
+        Insert param for search:</p>
+    <form th:action="@{/main/employee}" th:method="post">
+        <input type="text" name="getEmp" placeholder="id"><br><br>
+        <input type="submit" value="get employee"/>
+    </form><br>
+    <form th:action="@{/main/employee}" th:method="post">
+        <input type="hidden" name="getAllEmp" value="1">
+        <input type="submit" value="get all employee" />
+    </form><br>
+
+    <style type="text/css">
+        table {
+            background: wheat; /* Цвет фона таблицы */
+            color: black; /* Цвет текста */
+            margin-left: auto;
+            margin-right:  auto;
+        }
+
+        td {
+            background: white; /* Цвет фона ячеек */
+        }
+    </style>
+    <br>
+    <div>
+        <table >
+            <tr>
+                <th>
+                    <form style="display: inline" th:action="@{/main/employee}" th:method="post">
+                        <input type="hidden" name="getAllEmp" value="2">
+                        <input type="submit" value="Sort by id">
+                    </form>
+                </th>
+                <th>
+                    <form style="display: inline" th:action="@{/main/employee}" th:method="post">
+                        <input type="hidden" name="getAllEmp" value="3">
+                        <input type="submit" value="Sort by name">
+                    </form>
+                </th>
+                <th>
+                    <form style="display: inline" th:action="@{/main/employee}" th:method="post">
+                        <input type="hidden" name="getAllEmp" value="4">
+                        <input type="submit" value="Sort by role">
+                    </form>
+                </th>
+                <th>
+                    <form style="display: inline" th:action="@{/main/employee}" th:method="post">
+                        <input type="hidden" name="getAllEmp" value="5">
+                        <input type="submit" value="Sort by access">
+                    </form>
+                </th>
+            </tr>
+            <tr>
+                <th>Employee Id</th>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Access</th>
+                <th>Operation</th>
+            </tr>
+
+            <tr th:each="employee: ${employeeList}">
+                <td th:text="${employee.getId()}"></td>
+                <td th:text="${employee.getName()}"></td>
+                <td th:text="${employee.getRoll(employee.getAuthority())}"></td>
+                <td th:text="${employee.getAccess(employee.getEnabled())}"></td>
+                <td>
+                    <form th:action="@{/main/employee/delete}" th:method="post">
+                        <input type="hidden" name="empId" th:value="${employee.getId()}">
+                        <input type="submit" value="Delete">
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div style="position:relative; text-align: center">
+
+</div>
+</body>
+</html>

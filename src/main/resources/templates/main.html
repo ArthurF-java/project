@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml"
+        lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ProjectM</title>
+</head>
+<body>
+<div style="position: relative; text-align: right;">
+    <form th:method="post" th:action="@{/logout}">
+        <input type="submit" value="logout">
+    </form>
+</div>
+<div style="text-align: center">
+    <h1>Hello
+        <spun th:text="${employeeName}"/>
+        !
+    </h1>
+    <h2>You entered as a
+        <spun th:text="${employeeRole}"/>
+    </h2>
+
+    <div  sec:authorize="hasAnyRole('ADMIN', 'SALES', 'MEASURER')">
+        <form th:action="@{/main/customer}" th:method="post">
+            <input type="submit" value="CUSTOMERS ACTION">
+        </form>
+    </div><br>
+
+    <div sec:authorize="hasAnyRole('ADMIN', 'SALES', 'MEASURER')">
+        <form  th:action="@{/main/order}" th:method="post">
+            <input type="submit" value="ORDERS ACTION">
+        </form>
+    </div><br>
+
+    <div sec:authorize="hasAnyRole('ADMIN')">
+        <form th:action="@{/main/employee}" th:method="post">
+            <input type="submit" value="EMPLOYEES ACTION">
+        </form>
+    </div>
+</div>
+</body>
+</html>

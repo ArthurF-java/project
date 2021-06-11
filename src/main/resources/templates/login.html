@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html
+      xmlns:th="http://www.thymeleaf.org"
+lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ProjectM</title>
+</head>
+<body>
+<div style="text-align: center"><br><br><br><br>
+ <h1>WELCOME</h1>
+    <form class="col mx-auto" th:action="@{/login}" th:method="post">
+        <div class="form-group" >
+            <input name="name" type="text" placeholder="name" required>
+        </div><br>
+        <div>
+            <input name="password" type="password" placeholder="password" required>
+        </div><br>
+        <div>
+            <button type="submit" name="enter">ENTER</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
