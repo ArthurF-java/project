@@ -7,35 +7,15 @@
     <title>ProjectM</title>
 </head>
 <body>
-<div style="position: relative; text-align: right;">
-    <form th:method="post" th:action="@{/logout}">
-        <input type="submit" value="logout">
-    </form>
-</div>
-<br><br>
-<div style="position:relative; text-align: center">
-    <form th:action="@{/main}" th:method="get">
-        <input type="submit" value="MAIN MENU">
-    </form>
-</div>
-<br><br>
-<div style="position:relative; text-align: center">
-    <form style="display: inline" th:action="@{/main/employee/add}" th:method="get">
-        <input type="submit" value="ADD EMPLOYEE">
-    </form>&nbsp;&nbsp;&nbsp;
-    <form style="display: inline" th:action="@{/main/employee/edit}" th:method="get">
-        <input type="submit" value="EDIT EMPLOYEE">
-    </form>&nbsp;&nbsp;&nbsp;
-    <form style="display: inline" th:action="@{/main/employee/delete}" th:method="get">
-        <input type="submit" value="DELETE EMPLOYEE">
-    </form>&nbsp;&nbsp;&nbsp;
-</div>
+
+<div th:insert="fragments/fragment_employee::employee_top"></div>
+
 <br><br>
 <div style="position:relative; text-align: center">
     <p>Do you need get information of employee?
         Insert param for search:</p>
     <form th:action="@{/main/employee}" th:method="post">
-        <input type="text" name="getEmp" placeholder="id"><br><br>
+        <input type="text" name="getEmp" placeholder="id" required><br><br>
         <input type="submit" value="get employee"/>
     </form><br>
     <form th:action="@{/main/employee}" th:method="post">
@@ -43,18 +23,8 @@
         <input type="submit" value="get all employee" />
     </form><br>
 
-    <style type="text/css">
-        table {
-            background: wheat; /* Цвет фона таблицы */
-            color: black; /* Цвет текста */
-            margin-left: auto;
-            margin-right:  auto;
-        }
+    <div th:insert="fragments/fragment_for_all::table_style"></div>
 
-        td {
-            background: white; /* Цвет фона ячеек */
-        }
-    </style>
     <br>
     <div>
         <table >
@@ -85,11 +55,12 @@
                 </th>
             </tr>
             <tr>
-                <th>Employee Id</th>
+                <th>Id</th>
                 <th>Name</th>
                 <th>Role</th>
                 <th>Access</th>
-                <th>Operation</th>
+                <th>Edit</th>
+                <th>Delete</th>
             </tr>
 
             <tr th:each="employee: ${employeeList}">
@@ -98,8 +69,16 @@
                 <td th:text="${employee.getRoll(employee.getAuthority())}"></td>
                 <td th:text="${employee.getAccess(employee.getEnabled())}"></td>
                 <td>
+                    <form th:action="@{/main/employee/edit}" th:method="get">
+                        <input type="hidden" name="empId" th:value="${employee.getId()}">
+
+                        <input type="submit" value="Edit">
+                    </form>
+                </td>
+                <td>
                     <form th:action="@{/main/employee/delete}" th:method="post">
                         <input type="hidden" name="empId" th:value="${employee.getId()}">
+                        <input type="checkbox" required oninvalid="">
                         <input type="submit" value="Delete">
                     </form>
                 </td>

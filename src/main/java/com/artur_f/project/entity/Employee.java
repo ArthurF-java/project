@@ -34,6 +34,10 @@ public class Employee {
         this.authority = authority;
     }
 
+    public void setId(long id) {
+        Id = id;
+    }
+
     public long getId() {
         return Id;
     }
@@ -80,15 +84,17 @@ public class Employee {
 
     @Transient
     public String getRoll(Role roleEmployee){
-        if (roleEmployee.equals(Role.ROLE_ADMIN)){
-            return "administrator";
-        }else  if (roleEmployee.equals(Role.ROLE_SALES)){
-            return "sales manager";
-        }else if (roleEmployee.equals(Role.ROLE_MEASURER)){
-            return "measurer";
-        }else if(roleEmployee.equals(Role.ROLE_PRODUCTION)){
-            return "production";
-        }else return "Error";
+        if(roleEmployee!=null) {
+            if (roleEmployee.equals(Role.ROLE_ADMIN)) {
+                return "administrator";
+            } else if (roleEmployee.equals(Role.ROLE_SALES)) {
+                return "sales manager";
+            } else if (roleEmployee.equals(Role.ROLE_MEASURER)) {
+                return "measurer";
+            } else if (roleEmployee.equals(Role.ROLE_PRODUCTION)) {
+                return "production";
+            } else return "Error";
+        }else return "";
     }
 
     @Transient

@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:loyout="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+
+<div th:fragment="mess">
+    <h1>message</h1>
+</div>
+
+<div loyout:fragment="employee_top">
+    <div style="position: relative; text-align: right;">
+        <form th:method="post" th:action="@{/logout}">
+            <input type="submit" value="logout">
+        </form>
+    </div>
+    <br><br>
+    <div style="position:relative; text-align: center">
+        <form th:action="@{/main}" th:method="get">
+            <input type="submit" value="MAIN MENU">
+        </form>
+    </div>
+    <br><br>
+    <div style="position:relative; text-align: center">
+        &nbsp;&nbsp;&nbsp;&nbsp;<form style="display: inline" th:action="@{/main/employee/add}" th:method="get">
+        <input type="submit" value="ADD EMPLOYEE">
+    </form>&nbsp;&nbsp;&nbsp;
+        <form style="display: inline" th:action="@{/main/employee/edit}" th:method="get">
+            <input type="submit" value="EDIT EMPLOYEE">
+        </form>&nbsp;&nbsp;&nbsp;
+        <form style="display: inline" th:action="@{/main/employee/delete}" th:method="get">
+            <input type="submit" value="DELETE EMPLOYEE">
+        </form>
+    </div>
+</div>
+
+</body>
+
+</html>
+
+<!--<th:block xmlns:th="http://www.thymeleaf.org" th:fragment="employee_top">-->
+<!--</th:block>-->

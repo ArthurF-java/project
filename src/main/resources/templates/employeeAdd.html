@@ -7,37 +7,27 @@
 </head>
 <body>
 <div th:insert="fragments/fragment_employee::employee_top"></div>
-<br><br>
-<div style="position: relative; text-align: center">
-    <form th:action="@{/main/employee/edit}" th:method="get">
-        <input type="text" name="empId" placeholder="get employee by id" required><br><br>
-        <input type="submit" value="get employee"/>
-    </form>
-</div>
-<br>
-<div style="position: relative; text-align: center; color: darkred"
+<div style="position: relative; text-align: center; color: green"
+     th:utext="${messageSuccess}? ${messageSuccess} : '&lt;br /&gt;'"></div>
+<div style="position: relative; text-align: center; color: red"
      th:utext="${messageError}? ${messageError} : '&lt;br /&gt;'"></div>
 <div style="position: relative; text-align: center">
-    <form th:action="@{/main/employee/edit}" th:object="${employee}" th:method="post">
+    <form th:action="@{/main/employee/add}" th:object="${employee}" th:method="post">
 
         <div th:insert="fragments/fragment_for_all::table_style"></div>
 
         <table>
             <tr>
-                <td>Id</td>
-                <td><input th:field="*{id}" readonly></td>
-            </tr>
-            <tr>
                 <td>Name</td>
-                <td><input th:field="*{name}"></td>
+                <td><input th:field="*{name}" required></td>
             </tr>
             <tr>
                 <td>Password</td>
-                <td><input th:field="*{password}" readonly></td>
+                <td><input th:field="*{password}" required></td>
             </tr>
             <tr>
-                <td>New password(if need)</td>
-                <td><input type="password" name="new_password"></td>
+                <td>Confirm Password</td>
+                <td><input th:field="*{passwordConfirm}" required></td>
             </tr>
             <tr>
                 <td>Access</td>
@@ -59,11 +49,9 @@
             </tr>
         </table>
         <br>
-        <input type="submit" value="EDIT">
+        <input type="submit" value="ADD EMPLOYEE">
     </form>
 </div>
-<div style="position: relative; text-align: center; color: green"
-     th:utext="${messageSuccess}? ${messageSuccess} : '&lt;br /&gt;'"></div>
-</body>
 
+</body>
 </html>

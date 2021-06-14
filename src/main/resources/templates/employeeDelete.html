@@ -1,10 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html
+        xmlns:th="http://www.thymeleaf.org" xmlns: lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>ProjectM</title>
 </head>
 <body>
+<div th:insert="fragments/fragment_employee::employee_top"></div>
+<br><br>
+<div style="position: relative; text-align: center">
+<form th:action="@{/main/employee/delete}" th:method="get">
+    <input type="text" name="empId" placeholder="get employee by id" required><br><br>
+    <input type="submit" value="get employee"/>
+</form>
+</div>
 
+<div style="position: relative; text-align: center; color: darkred"th:utext="${message}? ${message} : '&lt;br /&gt;'"></div>
+
+<div th:insert="fragments/fragment_for_all::table_style"></div>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Role</th>
+        <th>Access</th>
+    </tr>
+    <tr>
+        <td th:text="${employee.getId()}"></td>
+        <td th:text="${employee.getName()}"></td>
+        <td th:text="${employee.getRoll(employee.getAuthority())}"></td>
+        <td th:text="${empAccess}"></td>
+    </tr>
+</table>
+<br>
+<form style="position: relative; text-align: center" th:action="@{/main/employee/delete}" th:method="post">
+    <input type="hidden" name="empId" th:value="${employee.getId()}">
+    <input type="checkbox" required oninvalid="">
+    <input type="submit" value="Delete employee">
+</form>
 </body>
 </html>

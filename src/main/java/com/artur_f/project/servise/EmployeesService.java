@@ -4,6 +4,7 @@ import com.artur_f.project.entity.Employee;
 import com.artur_f.project.entity.Role;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public interface EmployeesService {
@@ -18,4 +19,10 @@ public interface EmployeesService {
     List<Employee> sortByAccess(List<Employee> employees);
     List<Employee> sortEmployee(String check);
     void deleteEmployee(long empId);
+    boolean checkEmployeeIdInDb(long empId);
+    boolean checkEmployeeByName(String name);
+    Employee editOrSaveEmployee(Employee employee);
+    Map<Role, String> getMapRole();
+    Map<Integer, String> getMapAccess();
+    String passwordEncoding(String password);
 }
