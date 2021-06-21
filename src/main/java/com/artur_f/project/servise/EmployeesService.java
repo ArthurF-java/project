@@ -25,4 +25,5 @@ public interface EmployeesService {
     Map<Role, String> getMapRole();
     Map<Integer, String> getMapAccess();
     String passwordEncoding(String password);
+    
 }
