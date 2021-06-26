@@ -1,10 +1,93 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html
+        xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml"
+        lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-
+<div th:insert="fragments/fragment_customer::customer_top"></div>
+<br><br>
+<div th:insert="fragments/fragment_for_all::table_style"></div>
+<table>
+    <tr>
+        <th>
+            <form th:action="@{/main/customer}" th:method="post">
+                <input type="text" name="getByParam" >
+                <input type="hidden" name="getBy" value="id">
+                <input type="submit" value="get">
+            </form>
+        </th>
+        <th>
+            <form th:action="@{/main/customer}" th:method="post">
+                <input type="text" name="getByParam" >
+                <input type="hidden" name="getBy" value="surname">
+                <input type="submit" value="get">
+            </form>
+        </th>
+        <th>
+            <form th:action="@{/main/customer}" th:method="post">
+                <input type="text" name="getByParam" >
+                <input type="hidden" name="getBy" value="name">
+                <input type="submit" value="get">
+            </form>
+        </th>
+        <th>
+            <form th:action="@{/main/customer}" th:method="post">
+                <input type="text" name="getByParam" >
+                <input type="hidden" name="getBy" value="phone">
+                <input type="submit" value="get">
+            </form>
+        </th>
+        <th>
+            <form th:action="@{/main/customer}" th:method="post">
+                <input type="text" name="getByParam" >
+                <input type="hidden" name="getBy" value="city">
+                <input type="submit" value="get">
+            </form>
+        </th>
+        <th>
+            <form th:action="@{/main/customer}" th:method="post">
+                <input type="text" name="getByParam" >
+                <input type="hidden" name="getBy" value="street">
+                <input type="submit" value="get">
+            </form>
+        </th>
+        <th>
+            <form th:action="@{/main/customer}" th:method="post">
+                <input type="text" name="getByParam" >
+                <input type="hidden" name="getBy" value="house">
+                <input type="submit" value="get">
+            </form>
+        </th>
+        <th>
+            <form th:action="@{/main/customer}" th:method="post">
+                <input type="text" name="getByParam" >
+                <input type="hidden" name="getBy" value="flat">
+                <input type="submit" value="get">
+            </form>
+        </th>
+    </tr>
+    <tr>
+        <th>Id</th>
+        <th>Surname</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>City</th>
+        <th>Street</th>
+        <th>House</th>
+        <th>Flat</th>
+    </tr>
+    <tr th:each="customer: ${customerList}">
+        <td th:text="${customer.getId()}"></td>
+        <td th:text="${customer.getSurname()}"></td>
+        <td th:text="${customer.getName()}"></td>
+        <td th:text="${customer.getCityCustomer()}"></td>
+        <td th:text="${customer.getStreetCustomer()}"></td>
+        <td th:text="${customer.getHouseCustomer()}"></td>
+        <td th:text="${customer.getFlatCustomer()}"></td>
+    </tr>
+</table>
 </body>
 </html>

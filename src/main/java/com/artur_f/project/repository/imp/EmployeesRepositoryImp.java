@@ -34,12 +34,6 @@ public class EmployeesRepositoryImp implements EmployeesRepository {
     }
 
     @Override
-    public Employee getEmployee(long empId) {
-        Session session = entityManager.unwrap(Session.class);
-        return session.get(Employee.class, empId);
-    }
-
-    @Override
     public List<Employee> getAllEmployee() {
         Session session = entityManager.unwrap(Session.class);
         Query query = session.createQuery("from Employee ", Employee.class);

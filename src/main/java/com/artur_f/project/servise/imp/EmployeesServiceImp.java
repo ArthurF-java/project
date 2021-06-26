@@ -34,12 +34,6 @@ public class EmployeesServiceImp implements com.artur_f.project.servise.Employee
 
     @Override
     @Transactional
-    public Employee getEmployee(long empId) {
-        return employeesRepository.getEmployeeById(empId);
-    }
-
-    @Override
-    @Transactional
     public List<Employee> getAllEmployee() {
         return employeesRepository.getAllEmployee();
     }

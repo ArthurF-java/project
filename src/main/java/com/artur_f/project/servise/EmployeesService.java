@@ -11,7 +11,6 @@ public interface EmployeesService {
     long getEmployeeIdByName(String name);
     Employee getEmployeeById(long id);
     String getMessageRole(Role roleEmployee);
-    Employee getEmployee(long empId);
     List<Employee> getAllEmployee();
     List<Employee> sortById(List<Employee> employees);
     List<Employee> sortByName(List<Employee> employees);

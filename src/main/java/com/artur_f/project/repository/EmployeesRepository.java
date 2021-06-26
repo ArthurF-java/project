@@ -11,7 +11,6 @@ public interface EmployeesRepository {
 
     long getEmployeeIdByName(String empName);
     Employee getEmployeeById(long id);
-    Employee getEmployee(long empId);
     List<Employee> getAllEmployee();
     void deleteEmployee(long empId);
     boolean checkEmployeeIdInDb(long empId);
