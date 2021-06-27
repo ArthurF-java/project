@@ -48,17 +48,30 @@ public class CustomersRepositoryImp implements CustomersRepository {
 
     @Override
     public List<Customer> getCustomersBySurname(String customerSurname) {
-        return null;
+       Session session = entityManager.unwrap(Session.class);
+        return session.createQuery("from Customer where surname= :surname")
+                .setParameter("surname", customerSurname).getResultList();
+    }
+
+    @Override
+    public List<Customer> getCustomersByPhone(String customerPhone) {
+        Session session = entityManager.unwrap(Session.class);
+        return session.createQuery("from Customer where phone= :phone")
+                .setParameter("phone", customerPhone).getResultList();
     }
 
     @Override
     public List<Customer> getCustomersByCity(String customerCity) {
-        return null;
+        Session session = entityManager.unwrap(Session.class);
+        return session.createQuery("from Customer where cityCustomer= :city")
+                .setParameter("city", customerCity).getResultList();
     }
 
     @Override
     public List<Customer> getCustomersByStreet(String customerStreet) {
-        return null;
+        Session session = entityManager.unwrap(Session.class);
+        return session.createQuery("from Customer where streetCustomer= :street")
+                .setParameter("street", customerStreet).getResultList();
     }
 
     @Override
@@ -76,13 +89,15 @@ public class CustomersRepositoryImp implements CustomersRepository {
         return null;
     }
 
-    @Override
-    public Customer getCustomerByPhone(String phone) {
-        return null;
-    }
 
     @Override
     public Customer getCustomerById(long customerId) {
-        return null;
+        Session session = entityManager.unwrap(Session.class);
+        return session.get(Customer.class , customerId);
+    }
+
+    @Override
+    public boolean checkCustomerById(long customerId) {
+        return false;
     }
 }

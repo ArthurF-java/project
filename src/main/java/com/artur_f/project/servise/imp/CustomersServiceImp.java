@@ -44,6 +44,11 @@ public class CustomersServiceImp implements CustomersService {
     }
 
     @Override
+    public List<Customer> getCustomersByPhone(String customerPhone) {
+        return null;
+    }
+
+    @Override
     public List<Customer> getCustomersByCity(String customerCity) {
         return null;
     }
@@ -78,23 +83,22 @@ public class CustomersServiceImp implements CustomersService {
     public List<Customer> getCustomerBySmth(String getBy, String getByParam) {
         List <Customer> customerList = new ArrayList<>();
         if(getBy.equals("id")){
-            customerList.add(getCustomerById(Long.valueOf(getByParam)));
+            customerList.add(getCustomerById(Long.parseLong(getByParam)));
             return  customerList;
         }else if(getBy.equals("surname")){
             return getCustomersBySurname(getByParam);
         }else if(getBy.equals("name")){
             return getCustomersByName(getByParam);
         }else if(getBy.equals("phone")){
-            customerList.add(getCustomerByPhone(getByParam));
-            return  customerList;
+           return  getCustomersByPhone(getByParam);
         }else if(getBy.equals("city")){
             return getCustomersByCity(getByParam);
         }else if(getBy.equals("street")){
             return getCustomersByStreet(getByParam);
         }else if(getBy.equals("house")){
-            return getCustomersByHouse(Integer.valueOf(getByParam));
+            return getCustomersByHouse(Integer.parseInt(getByParam));
         }else if(getBy.equals("flat")){
-            return getCustomersByFlat(Integer.valueOf(getByParam));
+            return getCustomersByFlat(Integer.parseInt(getByParam));
         }return customerList;
     }
 
@@ -143,14 +147,15 @@ public class CustomersServiceImp implements CustomersService {
         return null;
     }
 
-    @Override
-    public Customer getCustomerByPhone(String phone) {
-        return null;
-    }
 
     @Override
     @Transactional
     public Customer getCustomerById(long customerId) {
         return customersRepository.getCustomerById(customerId);
+    }
+
+    @Override
+    public boolean checkCustomerById(long customerId) {
+        return false;
     }
 }

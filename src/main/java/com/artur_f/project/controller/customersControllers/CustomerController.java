@@ -30,11 +30,10 @@ public class CustomerController {
             @RequestParam(name = "getBy", required = false) String getBy,
             Model model) {
         List<Customer> customerList = new ArrayList<>();
-        if (sortBy != null) {
-            customerList = customersService.sortCustomer(sortBy);
-        } else if (getBy != null) {
-
+        if (getBy != null) {
             customerList = customersService.getCustomerBySmth(getBy, getByParam);
+        } if (sortBy != null) {
+            customerList = customersService.sortCustomer(sortBy);
         }
             model.addAttribute("customerList", customerList);
         return "customer";

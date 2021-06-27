@@ -11,6 +11,7 @@ public interface CustomersService {
     List<Customer> getCustomerBySmth(String getBy, String getByParam);
     List<Customer> getCustomersByName(String customerName);
     List<Customer> getCustomersBySurname(String customerSurname);
+    List<Customer> getCustomersByPhone(String customerPhone);
     List<Customer> getCustomersByCity(String customerCity);
     List<Customer> getCustomersByStreet(String customerStreet);
     List<Customer> getCustomersByHouse(int customerHouse);
@@ -31,6 +32,7 @@ public interface CustomersService {
     List<Customer> sortListCustomersByStreet(List<Customer> list);
     List<Customer> sortListCustomersByHomeNumber(List<Customer> list);
 
-    Customer getCustomerByPhone(String phone);
     Customer getCustomerById(long customerId);
+
+    boolean checkCustomerById(long customerId);
 }
