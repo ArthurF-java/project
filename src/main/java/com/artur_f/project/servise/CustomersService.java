@@ -23,14 +23,25 @@ public interface CustomersService {
             , String customerHome);
     List<Customer> getCustomersByAddress(String customerCity, String customerStreet);
     //Sort customers
-    List<Customer> sortCustomer(String sortBy);
+    List<Customer> sortCustomer(int checkUpOrDown,String sortBy, List<Customer> customerList);
+
     List<Customer> sortListCustomersById(List<Customer> list);
     List<Customer> sortListCustomersBySurname(List<Customer> list);
     List<Customer> sortListCustomersByName(List<Customer> list);
     List<Customer> sortListCustomersByPhone(List<Customer> list);
     List<Customer> sortListCustomersByCity(List<Customer> list);
     List<Customer> sortListCustomersByStreet(List<Customer> list);
-    List<Customer> sortListCustomersByHomeNumber(List<Customer> list);
+    List<Customer> sortListCustomersByHouseNumber(List<Customer> list);
+    List<Customer> sortListCustomersByFlatNumber(List<Customer> list);
+
+    List<Customer> reverseSortListCustomersById(List<Customer> list);
+    List<Customer> reverseSortListCustomersBySurname(List<Customer> list);
+    List<Customer> reverseSortListCustomersByName(List<Customer> list);
+    List<Customer> reverseSortListCustomersByPhone(List<Customer> list);
+    List<Customer> reverseSortListCustomersByCity(List<Customer> list);
+    List<Customer> reverseSortListCustomersByStreet(List<Customer> list);
+    List<Customer> reverseSortListCustomersByHouseNumber(List<Customer> list);
+    List<Customer> reverseSortListCustomersByFlatNumber(List<Customer> list);
 
     Customer getCustomerById(long customerId);
 

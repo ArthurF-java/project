@@ -22,7 +22,7 @@
     </h2>
 
     <div  sec:authorize="hasAnyRole('ADMIN', 'SALES', 'MEASURER')">
-        <form th:action="@{/main/customer}" th:method="post">
+        <form th:action="@{/main/customer}" th:method="get">
             <input type="submit" value="CUSTOMERS ACTION">
         </form>
     </div><br>

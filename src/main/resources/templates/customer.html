@@ -13,59 +13,169 @@
 <table>
     <tr>
         <th>
-            <form th:action="@{/main/customer}" th:method="post">
-                <input type="text" name="getByParam" >
+            <form th:action="@{/main/customer}" th:method="get">
+                <input type="text" name="getByParam">
                 <input type="hidden" name="getBy" value="id">
                 <input type="submit" value="get">
             </form>
         </th>
         <th>
-            <form th:action="@{/main/customer}" th:method="post">
-                <input type="text" name="getByParam" >
+            <form th:action="@{/main/customer}" th:method="get">
+                <input type="text" name="getByParam">
                 <input type="hidden" name="getBy" value="surname">
                 <input type="submit" value="get">
             </form>
         </th>
         <th>
-            <form th:action="@{/main/customer}" th:method="post">
-                <input type="text" name="getByParam" >
+            <form th:action="@{/main/customer}" th:method="get">
+                <input type="text" name="getByParam">
                 <input type="hidden" name="getBy" value="name">
                 <input type="submit" value="get">
             </form>
         </th>
         <th>
-            <form th:action="@{/main/customer}" th:method="post">
-                <input type="text" name="getByParam" >
+            <form th:action="@{/main/customer}" th:method="get">
+                <input type="text" name="getByParam">
                 <input type="hidden" name="getBy" value="phone">
                 <input type="submit" value="get">
             </form>
         </th>
         <th>
-            <form th:action="@{/main/customer}" th:method="post">
-                <input type="text" name="getByParam" >
+            <form th:action="@{/main/customer}" th:method="get">
+                <input type="text" name="getByParam">
                 <input type="hidden" name="getBy" value="city">
                 <input type="submit" value="get">
             </form>
         </th>
         <th>
-            <form th:action="@{/main/customer}" th:method="post">
-                <input type="text" name="getByParam" >
+            <form th:action="@{/main/customer}" th:method="get">
+                <input type="text" name="getByParam">
                 <input type="hidden" name="getBy" value="street">
                 <input type="submit" value="get">
             </form>
         </th>
         <th>
-            <form th:action="@{/main/customer}" th:method="post">
-                <input type="text" name="getByParam" >
+            <form th:action="@{/main/customer}" th:method="get">
+                <input type="text" name="getByParam">
                 <input type="hidden" name="getBy" value="house">
                 <input type="submit" value="get">
             </form>
         </th>
         <th>
-            <form th:action="@{/main/customer}" th:method="post">
-                <input type="text" name="getByParam" >
+            <form th:action="@{/main/customer}" th:method="get">
+                <input type="text" name="getByParam">
                 <input type="hidden" name="getBy" value="flat">
                 <input type="submit" value="get">
+            </form>
+        </th>
+    </tr>
+    <tr>
+        <th>
+                Sort
+                <form style="display:inline;" th:action="@{/main/customer}" th:method="post">
+                    <input type="hidden" name="sortUp" value="id">
+                    <input type="hidden" name="getByParam" th:value="${getByParam}">
+                    <input type="hidden" name="getBy" th:value="${getBy}">
+                    <input type="submit" value="up">
+                </form>
+                <form style="display:inline;" th:action="@{/main/customer}" th:method="post">
+                    <input type="hidden" name="sortDown" value="id">
+                    <input type="hidden" name="getByParam" th:value="${getByParam}">
+                    <input type="hidden" name="getBy" th:value="${getBy}">
+                    <input type="submit" value="down">
+                </form>
+        </th>
+        <th>
+            Sort
+            <form style="display:inline;" th:action="@{/main/customer}" th:method="post">
+                <input type="hidden" name="sortUp" value="surname">
+                <input type="hidden" name="getByParam" th:value="${getByParam}">
+                <input type="hidden" name="getBy" th:value="${getBy}">
+                <input type="submit" value="up">
+            </form>
+            <form style="display:inline;" th:action="@{/main/customer}" th:method="post">
+                <input type="hidden" name="sortDown" value="surname">
+                <input type="hidden" name="getByParam" th:value="${getByParam}">
+                <input type="hidden" name="getBy" th:value="${getBy}">
+                <input type="submit" value="down">
+            </form>
+        </th>
+        <th>
+            Sort
+            <form style="display:inline;" th:action="@{/main/customer}" th:method="post">
+                <input type="hidden" name="sortUp" value="name">
+                <input type="hidden" name="customerList" th:value="${customerList}">
+                <input type="submit" value="up">
+            </form>
+            <form style="display:inline;" th:action="@{/main/customer}" th:method="post">
+                <input type="hidden" name="sortDown" value="name">
+                <input type="hidden" name="customerList" th:value="${customerList}">
+                <input type="submit" value="down">
+            </form>
+        </th>
+        <th>
+            Sort
+            <form style="display:inline;" th:action="@{/main/customer}" th:method="post">
+                <input type="hidden" name="sortUp" value="phone">
+                <input type="hidden" name="customerList" th:value="${customerList}">
+                <input type="submit" value="up">
+            </form>
+            <form style="display:inline;" th:action="@{/main/customer}" th:method="post">
+                <input type="hidden" name="sortDown" value="phone">
+                <input type="hidden" name="customerList" th:value="${customerList}">
+                <input type="submit" value="down">
+            </form>
+        </th>
+        <th>
+            Sort
+            <form style="display:inline;" th:action="@{/main/customer}" th:method="post">
+                <input type="hidden" name="sortUp" value="city">
+                <input type="hidden" name="customerList" th:value="${customerList}">
+                <input type="submit" value="up">
+            </form>
+            <form style="display:inline;" th:action="@{/main/customer}" th:method="post">
+                <input type="hidden" name="sortDown" value="city">
+                <input type="hidden" name="customerList" th:value="${customerList}">
+                <input type="submit" value="down">
+            </form>
+        </th>
+        <th>
+            Sort
+            <form style="display:inline;" th:action="@{/main/customer}" th:method="post">
+                <input type="hidden" name="sortUp" value="street">
+                <input type="hidden" name="customerList" th:value="${customerList}">
+                <input type="submit" value="up">
+            </form>
+            <form style="display:inline;" th:action="@{/main/customer}" th:method="post">
+                <input type="hidden" name="sortDown" value="street">
+                <input type="hidden" name="customerList" th:value="${customerList}">
+                <input type="submit" value="down">
+            </form>
+        </th>
+        <th>
+            Sort
+            <form style="display:inline;" th:action="@{/main/customer}" th:method="post">
+                <input type="hidden" name="sortUp" value="house">
+                <input type="hidden" name="customerList" th:value="${customerList}">
+                <input type="submit" value="up">
+            </form>
+            <form style="display:inline;" th:action="@{/main/customer}" th:method="post">
+                <input type="hidden" name="sortDown" value="house">
+                <input type="hidden" name="customerList" th:value="${customerList}">
+                <input type="submit" value="down">
+            </form>
+        </th>
+        <th>
+            Sort
+            <form style="display:inline;" th:action="@{/main/customer}" th:method="post">
+                <input type="hidden" name="sortUp" value="flat">
+                <input type="hidden" name="customerList" th:value="${customerList}">
+                <input type="submit" value="up">
+            </form>
+            <form style="display:inline;" th:action="@{/main/customer}" th:method="post">
+                <input type="hidden" name="sortDown" value="flat">
+                <input type="hidden" name="customerList" th:value="${customerList}">
+                <input type="submit" value="down">
             </form>
         </th>
     </tr>
@@ -83,6 +193,7 @@
         <td th:text="${customer.getId()}"></td>
         <td th:text="${customer.getSurname()}"></td>
         <td th:text="${customer.getName()}"></td>
+        <td th:text="${customer.getPhone()}"></td>
         <td th:text="${customer.getCityCustomer()}"></td>
         <td th:text="${customer.getStreetCustomer()}"></td>
         <td th:text="${customer.getHouseCustomer()}"></td>

@@ -75,6 +75,20 @@ public class CustomersRepositoryImp implements CustomersRepository {
     }
 
     @Override
+    public List<Customer> getCustomersByHouse(int customersHouse) {
+        Session session = entityManager.unwrap(Session.class);
+        return session.createQuery("from Customer where houseCustomer= :house")
+                .setParameter("house", customersHouse).getResultList();
+    }
+
+    @Override
+    public List<Customer> getCustomersByFlat(int customersFlat) {
+        Session session = entityManager.unwrap(Session.class);
+        return session.createQuery("from Customer where flatCustomer= :flat")
+                .setParameter("flat", customersFlat).getResultList();
+    }
+
+    @Override
     public List<Customer> getCustomersByAddress(String customerCity, String customerStreet, String customerHome, String customerFlat) {
         return null;
     }

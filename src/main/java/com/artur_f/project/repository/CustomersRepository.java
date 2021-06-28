@@ -14,6 +14,8 @@ public interface CustomersRepository {
     List<Customer> getCustomersByPhone(String customerPhone);
     List<Customer> getCustomersByCity(String customerCity);
     List<Customer> getCustomersByStreet(String customerStreet);
+    List<Customer> getCustomersByHouse(int customerHouse);
+    List<Customer> getCustomersByFlat(int customerFlat);
 
     List<Customer> getCustomersByAddress(String customerCity, String customerStreet
             , String customerHome, String customerFlat);
