@@ -32,13 +32,8 @@ public class CustomersServiceImp implements CustomersService {
 
     @Override
     @Transactional
-    public Customer getCustomerById(long customerId) {
+    public List <Customer> getCustomerById(long customerId) {
         return customersRepository.getCustomerById(customerId);
-    }
-
-    @Override
-    public boolean checkCustomerById(long customerId) {
-        return false;
     }
 
     @Override
@@ -111,8 +106,11 @@ public class CustomersServiceImp implements CustomersService {
     public List<Customer> getCustomerBySmth(String getBy, String getByParam) {
         List<Customer> customerList = new ArrayList<>();
         if (getBy.equals("id")) {
-            customerList.add(getCustomerById(Long.parseLong(getByParam)));
-            return customerList;
+            try{
+            return getCustomerById(Long.parseLong(getByParam));}
+            catch (NumberFormatException e){
+                return customerList;
+            }
         } else if (getBy.equals("surname")) {
             return getCustomersBySurname(getByParam);
         } else if (getBy.equals("name")) {
@@ -124,9 +122,18 @@ public class CustomersServiceImp implements CustomersService {
         } else if (getBy.equals("street")) {
             return getCustomersByStreet(getByParam);
         } else if (getBy.equals("house")) {
-            return getCustomersByHouse(Integer.parseInt(getByParam));
+            try{
+                return getCustomersByHouse(Integer.parseInt(getByParam));}
+            catch (NumberFormatException e){
+                return customerList;
+            }
         } else if (getBy.equals("flat")) {
-            return getCustomersByFlat(Integer.parseInt(getByParam));
+            try{
+                return getCustomersByFlat(Integer.parseInt(getByParam));}
+            catch (NumberFormatException e){
+                return customerList;
+            }
+
         }
         return customerList;
     }
@@ -135,39 +142,39 @@ public class CustomersServiceImp implements CustomersService {
     public List<Customer> sortCustomer(int checkUpOrDown, String sortBy, List<Customer> customerList) {
         if (checkUpOrDown > 0) {
             if(sortBy.equals("id")){
-                sortListCustomersById(customerList);
+               return sortListCustomersById(customerList);
             }else if(sortBy.equals("surname")){
-                sortListCustomersBySurname(customerList);
+                return sortListCustomersBySurname(customerList);
             }else if(sortBy.equals("name")){
-                sortListCustomersByName(customerList);
+                return sortListCustomersByName(customerList);
             }else if(sortBy.equals("phone")){
-                sortListCustomersByPhone(customerList);
+                return sortListCustomersByPhone(customerList);
             }else if(sortBy.equals("city")){
-                sortListCustomersByCity(customerList);
+                return sortListCustomersByCity(customerList);
             }else if(sortBy.equals("street")){
-                sortListCustomersByStreet(customerList);
+                return sortListCustomersByStreet(customerList);
             }else if(sortBy.equals("house")){
-                sortListCustomersByHouseNumber(customerList);
+                return sortListCustomersByHouseNumber(customerList);
             }else if(sortBy.equals("flat")){
-                sortListCustomersByFlatNumber(customerList);
+                return sortListCustomersByFlatNumber(customerList);
             }
         } else {
             if(sortBy.equals("id")){
-                sortListCustomersById(customerList);
+                return reverseSortListCustomersById(customerList);
             }else if(sortBy.equals("surname")){
-                reverseSortListCustomersBySurname(customerList);
+                return reverseSortListCustomersBySurname(customerList);
             }else if(sortBy.equals("name")){
-                reverseSortListCustomersByName(customerList);
+                return reverseSortListCustomersByName(customerList);
             }else if(sortBy.equals("phone")){
-                reverseSortListCustomersByPhone(customerList);
+                return reverseSortListCustomersByPhone(customerList);
             }else if(sortBy.equals("city")){
-                reverseSortListCustomersByCity(customerList);
+                return reverseSortListCustomersByCity(customerList);
             }else if(sortBy.equals("street")){
-                reverseSortListCustomersByStreet(customerList);
+                return reverseSortListCustomersByStreet(customerList);
             }else if(sortBy.equals("house")){
-                reverseSortListCustomersByHouseNumber(customerList);
+                return reverseSortListCustomersByHouseNumber(customerList);
             }else if(sortBy.equals("flat")){
-                reverseSortListCustomersByFlatNumber(customerList);
+                return reverseSortListCustomersByFlatNumber(customerList);
             }
         }
         return customerList;
@@ -210,7 +217,7 @@ public class CustomersServiceImp implements CustomersService {
 
     @Override
     public List<Customer> sortListCustomersByFlatNumber(List<Customer> list) {
-        return list.stream().sorted(Comparator.comparing(Customer::getFlatCustomer)).collect(Collectors.toList());
+        return list.stream().sorted(Comparator.comparingInt(Customer::getFlatCustomer)).collect(Collectors.toList());
     }
 
     @Override

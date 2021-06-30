@@ -9,6 +9,7 @@ public interface CustomersRepository {
     void deleteCustomer(long customerId);
 
     List<Customer> getAllCustomers();
+    List<Customer> getCustomerById(long customerId);
     List<Customer> getCustomersByName(String customerName);
     List<Customer> getCustomersBySurname(String customerSurname);
     List<Customer> getCustomersByPhone(String customerPhone);
@@ -23,7 +24,4 @@ public interface CustomersRepository {
             , String customerHome);
     List<Customer> getCustomersByAddress(String customerCity, String customerStreet);
 
-    Customer getCustomerById(long customerId);
-
-    boolean checkCustomerById(long customerId);
 }

@@ -40,6 +40,12 @@ public class CustomersRepositoryImp implements CustomersRepository {
     }
 
     @Override
+    public List <Customer> getCustomerById(long customerId) {
+        Session session = entityManager.unwrap(Session.class);
+        return session.createQuery("from Customer where id= :id")
+                .setParameter("id", customerId).getResultList();
+    }
+    @Override
     public List<Customer> getCustomersByName(String customerName) {
         Session session = entityManager.unwrap(Session.class);
         return session.createQuery("from Customer where name= :name")
@@ -104,14 +110,6 @@ public class CustomersRepositoryImp implements CustomersRepository {
     }
 
 
-    @Override
-    public Customer getCustomerById(long customerId) {
-        Session session = entityManager.unwrap(Session.class);
-        return session.get(Customer.class , customerId);
-    }
 
-    @Override
-    public boolean checkCustomerById(long customerId) {
-        return false;
-    }
+
 }

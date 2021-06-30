@@ -8,6 +8,7 @@ public interface CustomersService {
     Customer editOrSaveCustomer(Customer customer);
     void deleteCustomer(long customerId);
     List<Customer> getAllCustomers();
+    List<Customer> getCustomerById(long customerId);
     List<Customer> getCustomerBySmth(String getBy, String getByParam);
     List<Customer> getCustomersByName(String customerName);
     List<Customer> getCustomersBySurname(String customerSurname);
@@ -24,6 +25,7 @@ public interface CustomersService {
     List<Customer> getCustomersByAddress(String customerCity, String customerStreet);
     //Sort customers
     List<Customer> sortCustomer(int checkUpOrDown,String sortBy, List<Customer> customerList);
+
 
     List<Customer> sortListCustomersById(List<Customer> list);
     List<Customer> sortListCustomersBySurname(List<Customer> list);
@@ -43,7 +45,6 @@ public interface CustomersService {
     List<Customer> reverseSortListCustomersByHouseNumber(List<Customer> list);
     List<Customer> reverseSortListCustomersByFlatNumber(List<Customer> list);
 
-    Customer getCustomerById(long customerId);
 
-    boolean checkCustomerById(long customerId);
+
 }

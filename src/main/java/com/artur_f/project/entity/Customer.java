@@ -102,4 +102,18 @@ public class Customer {
     public void setFlatCustomer(int flatCustomer) {
         this.flatCustomer = flatCustomer;
     }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", surname='" + surname + '\'' +
+                ", name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", cityCustomer='" + cityCustomer + '\'' +
+                ", streetCustomer='" + streetCustomer + '\'' +
+                ", houseCustomer=" + houseCustomer +
+                ", flatCustomer=" + flatCustomer +
+                '}';
+    }
 }
