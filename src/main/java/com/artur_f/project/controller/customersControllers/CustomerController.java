@@ -1,12 +1,10 @@
 package com.artur_f.project.controller.customersControllers;
 
-
 import com.artur_f.project.entity.Customer;
 import com.artur_f.project.servise.CustomersService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,12 +29,15 @@ public class CustomerController {
             @ModelAttribute("customerList") List<Customer> customerList,
             @RequestParam(name = "sortUp", required = false) String sortUp,
             @RequestParam(name = "sortDown", required = false) String sortDown,
+            @RequestParam(name = "getAll", required = false) String getAllCustomers,
             Model model) {
         if(customerList!=null){
             if (sortUp != null) {
                 customerList = customersService.sortCustomer(1, sortUp,  customerList);
             } else if (sortDown != null) {
                 customerList = customersService.sortCustomer(0, sortDown, customerList);
+            }else if(getAllCustomers!=null){
+                customerList = customersService.getAllCustomers();
             }
         }
         model.addAttribute("customerList", customerList);

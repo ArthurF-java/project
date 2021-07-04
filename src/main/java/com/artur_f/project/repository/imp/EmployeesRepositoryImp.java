@@ -63,7 +63,9 @@ public class EmployeesRepositoryImp implements EmployeesRepository {
 
     @Override
     public boolean checkEmployeeIdInDb(long empId) {
-        if (getEmployeeById(empId) == null) {
+        Session session = entityManager.unwrap(Session.class);
+        Employee employee = session.get(Employee.class, empId);
+        if (employee == null) {
             return false;
         } else {
             return true;

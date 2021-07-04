@@ -5,7 +5,6 @@ import com.artur_f.project.repository.CustomersRepository;
 import com.artur_f.project.servise.CustomersService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -21,13 +20,39 @@ public class CustomersServiceImp implements CustomersService {
     }
 
     @Override
-    public Customer editOrSaveCustomer(Customer customer) {
-        return null;
+    @Transactional
+    public void updateCustomer(Customer customer) {
+        customersRepository.updateCustomer(customer);
     }
 
     @Override
-    public void deleteCustomer(long customerId) {
+    @Transactional
+    public Customer saveOrUpdate(Customer customer) {
+        return customersRepository.saveOrUpdate(customer);
+    }
 
+    @Override
+    @Transactional
+    public void deleteCustomer(long customerId) {
+        customersRepository.deleteCustomer(customerId);
+    }
+
+    @Override
+    @Transactional
+    public boolean checkCustomerPhone(String phone) {
+        return customersRepository.checkCustomerPhone(phone);
+    }
+
+    @Override
+    @Transactional
+    public boolean checkCustomerId(long customerId) {
+        return customersRepository.checkCustomerId(customerId);
+    }
+
+    @Override
+    @Transactional
+    public boolean checkCustomerForPhoneChange(long customerId, String phone) {
+        return customersRepository.checkCustomerForPhoneChange(customerId, phone);
     }
 
     @Override
@@ -39,7 +64,7 @@ public class CustomersServiceImp implements CustomersService {
     @Override
     @Transactional
     public List<Customer> getAllCustomers() {
-        return null;
+        return customersRepository.getAllCustomers();
     }
 
     @Override
@@ -73,11 +98,13 @@ public class CustomersServiceImp implements CustomersService {
     }
 
     @Override
+    @Transactional
     public List<Customer> getCustomersByHouse(int customerHouse) {
         return customersRepository.getCustomersByHouse(customerHouse);
     }
 
     @Override
+    @Transactional
     public List<Customer> getCustomersByFlat(int customerFlat) {
         return customersRepository.getCustomersByFlat(customerFlat);
     }

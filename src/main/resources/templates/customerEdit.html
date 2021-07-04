@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org" xmlns: lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ProjectM</title>
+</head>
+<body>
+<div th:insert="fragments/fragment_customer::customer_top"></div>
+<br><br>
+<div th:insert="fragments/fragment_for_all::table_style"></div>
+
+<form style="position: relative; text-align: center" th:action="@{/main/customer/edit}" th:method="get">
+    <input type="text" name="customerId" placeholder="id" required>
+    <input type="submit" value="Get customer by Id"/>
+</form>
+<div style="position: relative; text-align: center; color: red"
+     th:utext="${message}? ${message} : '&lt;br /&gt;'"></div>
+<div style="position: relative; text-align: center">
+    <form th:action="@{/main/customer/edit}" th:object="${customer}" th:method="post">
+
+        <div th:insert="fragments/fragment_for_all::table_style"></div>
+
+        <table>
+            <tr>
+                <td>Id</td>
+                <td><input th:field="*{id}" readonly></td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td><input th:field="*{name}" required></td>
+            </tr>
+            <tr>
+                <td>Surname</td>
+                <td><input th:field="*{surname}" ></td>
+            </tr>
+            <tr>
+                <td>Phone*</td>
+                <td><input th:field="*{phone}" required></td>
+            </tr>
+            <tr>
+                <td>City</td>
+                <td><input th:field="*{cityCustomer}" ></td>
+            </tr>
+            <tr>
+                <td>Street</td>
+                <td><input th:field="*{streetCustomer}" ></td>
+            </tr>
+            <tr>
+                <td>House #</td>
+                <td><input th:field="*{houseCustomer}" ></td>
+            </tr>
+            <tr>
+                <td>Flat #</td>
+                <td><input th:field="*{flatCustomer}" ></td>
+            </tr>
+        </table>
+        <br>
+        <input type="submit" value="EDIT CUSTOMER">
+    </form>
+</div>
+</body>
+</html>

@@ -1,12 +1,17 @@
 package com.artur_f.project.servise;
-
 import com.artur_f.project.entity.Customer;
-
 import java.util.List;
 
 public interface CustomersService {
-    Customer editOrSaveCustomer(Customer customer);
+    void updateCustomer (Customer customer);
+    Customer saveOrUpdate(Customer customer);
     void deleteCustomer(long customerId);
+
+
+    boolean checkCustomerPhone(String phone);
+    boolean checkCustomerId(long customerId);
+    boolean checkCustomerForPhoneChange(long customerId, String phone);
+
     List<Customer> getAllCustomers();
     List<Customer> getCustomerById(long customerId);
     List<Customer> getCustomerBySmth(String getBy, String getByParam);
@@ -25,7 +30,6 @@ public interface CustomersService {
     List<Customer> getCustomersByAddress(String customerCity, String customerStreet);
     //Sort customers
     List<Customer> sortCustomer(int checkUpOrDown,String sortBy, List<Customer> customerList);
-
 
     List<Customer> sortListCustomersById(List<Customer> list);
     List<Customer> sortListCustomersBySurname(List<Customer> list);

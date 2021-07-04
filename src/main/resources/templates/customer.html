@@ -10,6 +10,13 @@
 <div th:insert="fragments/fragment_customer::customer_top"></div>
 <br><br>
 <div th:insert="fragments/fragment_for_all::table_style"></div>
+<div style="position:relative; text-align: center">
+    <form th:action="@{/main/customer}" th:method="post">
+        <input type="hidden" name="getAll" value="getAll">
+        <input type="submit" value="Get all customers!">
+    </form>
+</div>
+<br>
 <table>
     <tr>
         <th>
@@ -71,15 +78,15 @@
     </tr>
     <tr>
         <th>
-                Sort
-                <form style="display:inline;" th:action="@{/main/customer}" th:method="post">
-                    <input type="hidden" name="sortUp" value="id">
-                    <input type="submit" value="up">
-                </form>
-                <form style="display:inline;" th:action="@{/main/customer}" th:method="post">
-                    <input type="hidden" name="sortDown" value="id">
-                    <input type="submit" value="down">
-                </form>
+            Sort
+            <form style="display:inline;" th:action="@{/main/customer}" th:method="post">
+                <input type="hidden" name="sortUp" value="id">
+                <input type="submit" value="up">
+            </form>
+            <form style="display:inline;" th:action="@{/main/customer}" th:method="post">
+                <input type="hidden" name="sortDown" value="id">
+                <input type="submit" value="down">
+            </form>
         </th>
         <th>
             Sort
@@ -98,7 +105,7 @@
                 <input type="hidden" name="sortUp" value="name">
                 <input type="submit" value="up">
             </form>
-            <form style="display:inline;" th:action="@{/main/customer}"  th:method="post">
+            <form style="display:inline;" th:action="@{/main/customer}" th:method="post">
                 <input type="hidden" name="sortDown" value="name">
                 <input type="submit" value="down">
             </form>
@@ -178,6 +185,12 @@
         <td th:text="${customer.getStreetCustomer()}"></td>
         <td th:text="${customer.getHouseCustomer()}"></td>
         <td th:text="${customer.getFlatCustomer()}"></td>
+        <td>
+            <form th:method="get" th:action="@{/main/customer/edit}">
+                <input type="hidden" name="customerId" th:value="${customer.getId()}">
+                <input type="submit" value="Edit">
+            </form>
+        </td>
     </tr>
 </table>
 </body>

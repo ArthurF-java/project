@@ -5,7 +5,10 @@ import com.artur_f.project.repository.CustomersRepository;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import java.util.List;
 
 @Repository
@@ -18,7 +21,13 @@ public class CustomersRepositoryImp implements CustomersRepository {
     }
 
     @Override
-    public Customer editOrSaveCustomer(Customer customer) {
+    public void updateCustomer(Customer customer) {
+        Session session = entityManager.unwrap(Session.class);
+        session.update(customer);
+    }
+
+    @Override
+    public Customer saveOrUpdate(Customer customer) {
         Session session = entityManager.unwrap(Session.class);
         session.saveOrUpdate(customer);
         return customer;
@@ -31,6 +40,41 @@ public class CustomersRepositoryImp implements CustomersRepository {
                 .setParameter("customerId", customerId);
         query.executeUpdate();
 
+    }
+
+    @Override
+    public boolean checkCustomerId(long customerId) {
+        Session session = entityManager.unwrap(Session.class);
+        Customer customer = session.get(Customer.class, customerId);
+        if (customer == null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    @Override
+    public boolean checkCustomerPhone(String phone) {
+        Session session = entityManager.unwrap(Session.class);
+        try {
+            Customer customer = (Customer) session.createQuery("from  Customer  where  phone=:phone")
+                    .setParameter("phone", phone).getSingleResult();
+            return false;
+        }catch (NoResultException e ){
+            return true;
+        }
+    }
+
+    @Override
+    public boolean checkCustomerForPhoneChange(long customerId, String phone) {
+        Session session = entityManager.unwrap(Session.class);
+        Customer customer = session.get(Customer.class, customerId);
+        if(customer.getPhone().equals(phone)){
+            return true;
+        }else {
+            return false;
+        }
+//        return true;
     }
 
     @Override

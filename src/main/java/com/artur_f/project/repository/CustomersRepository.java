@@ -5,8 +5,13 @@ import com.artur_f.project.entity.Customer;
 import java.util.List;
 
 public interface CustomersRepository {
-    Customer editOrSaveCustomer(Customer customer);
+    void updateCustomer (Customer customer);
+    Customer saveOrUpdate(Customer customer);
     void deleteCustomer(long customerId);
+
+    boolean checkCustomerPhone(String phone);
+    boolean checkCustomerId(long customerId);
+    boolean checkCustomerForPhoneChange(long customerId, String phone);
 
     List<Customer> getAllCustomers();
     List<Customer> getCustomerById(long customerId);
