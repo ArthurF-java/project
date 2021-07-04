@@ -74,7 +74,6 @@ public class CustomersRepositoryImp implements CustomersRepository {
         }else {
             return false;
         }
-//        return true;
     }
 
     @Override
