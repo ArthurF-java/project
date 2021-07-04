@@ -68,6 +68,7 @@ public class CustomersRepositoryImp implements CustomersRepository {
     @Override
     public boolean checkCustomerForPhoneChange(long customerId, String phone) {
         Session session = entityManager.unwrap(Session.class);
+
         Customer customer = session.get(Customer.class, customerId);
         if(customer.getPhone().equals(phone)){
             return true;

@@ -43,13 +43,12 @@ public class EditCustomerController {
 
     @PostMapping
     public String postEditCustomer(
+            @RequestParam(name = "customerPhone", required = false) String customerPhone,
             @ModelAttribute("customer") Customer customer){
-        if(customersService.checkCustomerForPhoneChange(customer.getId(), customer.getPhone())){
-            System.out.println("++++++++++if1");
+        if(customerPhone.equals(customer.getPhone())){
             customersService.saveOrUpdate(customer);
         }else {
             if (customersService.checkCustomerPhone(customer.getPhone())){
-                System.out.println("++++++++++++++if2");
                 customersService.saveOrUpdate(customer);
             }else {
                 return "redirect:/main/customer/edit?customerId=" + customer.getId() + "&message=true";
