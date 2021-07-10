@@ -3,7 +3,7 @@ import com.artur_f.project.entity.Customer;
 import java.util.List;
 
 public interface CustomersService {
-    void updateCustomer (Customer customer);
+    void saveCustomerSimpleJPA(Customer customer);
     Customer saveOrUpdate(Customer customer);
     void deleteCustomer(long customerId);
 
@@ -22,7 +22,9 @@ public interface CustomersService {
     List<Customer> getCustomersByStreet(String customerStreet);
     List<Customer> getCustomersByHouse(int customerHouse);
     List<Customer> getCustomersByFlat(int customerFlat);
+
     // Get customers by address
+
     List<Customer> getCustomersByAddress(String customerCity, String customerStreet
             , String customerHome, String customerFlat);
     List<Customer> getCustomersByAddress(String customerCity, String customerStreet

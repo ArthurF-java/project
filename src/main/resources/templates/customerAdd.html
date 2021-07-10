@@ -7,12 +7,13 @@
 </head>
 <body>
 <div th:insert="fragments/fragment_customer::customer_top"></div>
-<br><br>
+<br>
 <div th:insert="fragments/fragment_for_all::table_style"></div>
 <div style="position: relative; text-align: center; color: green"
      th:utext="${messageSuccess}? ${messageSuccess} : '&lt;br /&gt;'"></div>
 <div style="position: relative; text-align: center; color: red"
      th:utext="${messageError}? ${messageError} : '&lt;br /&gt;'"></div>
+<br><br>
 <div style="position: relative; text-align: center">
     <form th:action="@{/main/customer/add}" th:object="${customer}" th:method="post">
 

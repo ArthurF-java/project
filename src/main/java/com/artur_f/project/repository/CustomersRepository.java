@@ -1,11 +1,10 @@
 package com.artur_f.project.repository;
-
 import com.artur_f.project.entity.Customer;
 
 import java.util.List;
 
 public interface CustomersRepository {
-    void updateCustomer (Customer customer);
+    void saveCustomerSimpleJPA(Customer customer);
     Customer saveOrUpdate(Customer customer);
     void deleteCustomer(long customerId);
 

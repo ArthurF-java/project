@@ -5,25 +5,31 @@ import com.artur_f.project.repository.CustomersRepository;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
-
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import java.util.List;
 
 @Repository
-public class CustomersRepositoryImp implements CustomersRepository {
+public class CustomersRepositoryImp  implements CustomersRepository  {
+
 
     private final EntityManager entityManager;
+//    SimpleJpaRepository simpleJpaRepository;
 
     public CustomersRepositoryImp(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 
+//    public CustomersRepositoryImp(EntityManager entityManager, SimpleJpaRepository simpleJpaRepository) {
+//        this.entityManager = entityManager;
+//        this.simpleJpaRepository = simpleJpaRepository;
+//    }
+
     @Override
-    public void updateCustomer(Customer customer) {
-        Session session = entityManager.unwrap(Session.class);
-        session.update(customer);
+    public void saveCustomerSimpleJPA(Customer customer) {
+//        simpleJpaRepository.save(customer);
+//        Session session = entityManager.unwrap(Session.class);
+//        session.update(customer);
     }
 
     @Override
@@ -152,8 +158,5 @@ public class CustomersRepositoryImp implements CustomersRepository {
     public List<Customer> getCustomersByAddress(String customerCity, String customerStreet) {
         return null;
     }
-
-
-
 
 }

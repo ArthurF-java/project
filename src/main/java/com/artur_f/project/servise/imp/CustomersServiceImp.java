@@ -21,8 +21,8 @@ public class CustomersServiceImp implements CustomersService {
 
     @Override
     @Transactional
-    public void updateCustomer(Customer customer) {
-        customersRepository.updateCustomer(customer);
+    public void saveCustomerSimpleJPA(Customer customer) {
+        customersRepository.saveCustomerSimpleJPA(customer);
     }
 
     @Override
@@ -54,6 +54,21 @@ public class CustomersServiceImp implements CustomersService {
     public boolean checkCustomerForPhoneChange(long customerId, String phone) {
         return customersRepository.checkCustomerForPhoneChange(customerId, phone);
     }
+
+//    @Override
+//    @Transactional
+//    public String ForEditCustomer(long customerId, String phone, Customer customer) {
+//        String check = "true";
+//        if(checkCustomerForPhoneChange(customerId, phone)){
+//            saveOrUpdate(customer);
+//        }else {
+//            if (checkCustomerPhone(customer.getPhone())){
+//                saveOrUpdate(customer);
+//            }else {
+//                check = "false";
+//            }
+//        }return  check;
+//    }
 
     @Override
     @Transactional

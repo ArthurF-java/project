@@ -1,6 +1,7 @@
 package com.artur_f.project.entity;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name="customers")
@@ -116,4 +117,5 @@ public class Customer {
                 ", flatCustomer=" + flatCustomer +
                 '}';
     }
+
 }

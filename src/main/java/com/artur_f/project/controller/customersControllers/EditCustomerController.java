@@ -47,9 +47,12 @@ public class EditCustomerController {
             @ModelAttribute("customer") Customer customer){
         if(customerPhone.equals(customer.getPhone())){
             customersService.saveOrUpdate(customer);
+//        if(customersService.checkCustomerForPhoneChange(customer.getId(), customer.getPhone())){
+//            customersService.saveCustomerSimpleJPA(customer);
         }else {
             if (customersService.checkCustomerPhone(customer.getPhone())){
                 customersService.saveOrUpdate(customer);
+//                customersService.saveCustomerSimpleJPA(customer);
             }else {
                 return "redirect:/main/customer/edit?customerId=" + customer.getId() + "&message=true";
             }

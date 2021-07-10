@@ -9,15 +9,16 @@
 <div th:insert="fragments/fragment_customer::customer_top"></div>
 <br><br>
 <div th:insert="fragments/fragment_for_all::table_style"></div>
-<br>
-<form style="position: relative; text-align: center" th:action="@{/main/customer/edit}" th:method="get">
+<div style="position: relative; text-align: center; color: red"
+     th:utext="${message}? ${message} : '&lt;br /&gt;'"></div>
+<form style="position: relative; text-align: center" th:action="@{/main/customer/delete}" th:method="get">
     <input type="text" name="customerId" placeholder="id" required>
     <input type="submit" value="Get customer by Id"/>
 </form>
-<div style="position: relative; text-align: center; color: red"
-     th:utext="${message}? ${message} : '&lt;br /&gt;'"></div>
+<div style="position: relative; text-align: center; color: green"
+     th:utext="${messageFromPost}? ${messageFromPost} : '&lt;br /&gt;'"></div>
 <div style="position: relative; text-align: center">
-    <form th:action="@{/main/customer/edit}" th:object="${customer}" th:method="post">
+    <form th:action="@{/main/customer/delete}" th:object="${customer}" th:method="post">
 
         <div th:insert="fragments/fragment_for_all::table_style"></div>
 
@@ -28,36 +29,37 @@
             </tr>
             <tr>
                 <td>Name</td>
-                <td><input th:field="*{name}" required></td>
+                <td><input th:field="*{name}" readonly></td>
             </tr>
             <tr>
                 <td>Surname</td>
-                <td><input th:field="*{surname}" ></td>
+                <td><input th:field="*{surname}" readonly></td>
             </tr>
             <tr>
                 <td>Phone*</td>
-                <td><input th:field="*{phone}" required></td>
+                <td><input th:field="*{phone}" readonly></td>
             </tr>
             <tr>
                 <td>City</td>
-                <td><input th:field="*{cityCustomer}" ></td>
+                <td><input th:field="*{cityCustomer}" readonly></td>
             </tr>
             <tr>
                 <td>Street</td>
-                <td><input th:field="*{streetCustomer}" ></td>
+                <td><input th:field="*{streetCustomer}" readonly></td>
             </tr>
             <tr>
                 <td>House #</td>
-                <td><input th:field="*{houseCustomer}" ></td>
+                <td><input th:field="*{houseCustomer}" readonly></td>
             </tr>
             <tr>
                 <td>Flat #</td>
-                <td><input th:field="*{flatCustomer}" ></td>
+                <td><input th:field="*{flatCustomer}" readonly></td>
             </tr>
         </table>
         <br>
-        <input type="hidden" th:name="customerPhone" th:value="${customer.getPhone()}">
-        <input type="submit" value="EDIT CUSTOMER">
+        <input type="hidden" th:name="customerId" th:value="${customer.getId()}">
+        <input type="checkbox" required oninvalid="">
+        <input type="submit" value="DELETE CUSTOMER">
     </form>
 </div>
 </body>
